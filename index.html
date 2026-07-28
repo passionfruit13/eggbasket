@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EggBasket — Chicken Egg Tracker for Backyard Flocks</title>
+<meta name="description" content="Count today's eggs in ten seconds. Know your cost per egg. EggBasket keeps your flock's laying record on your phone and in your own private iCloud — no account, no ads.">
+<link rel="canonical" href="https://passionfruit13.github.io/eggbasket/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EggBasket">
+<meta property="og:title" content="EggBasket — Chicken Egg Tracker">
+<meta property="og:description" content="Count today's eggs in ten seconds. Know your cost per egg.">
+<meta property="og:url" content="https://passionfruit13.github.io/eggbasket/">
+<meta name="theme-color" content="#FAF6EE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#171310" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3C10.5 3 6 12 6 19a10 10 0 0 0 20 0C26 12 21.5 3 16 3Z' fill='%23A63B22'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #FAF6EE;
+    --surface: #FFFFFF;
+    --ink: #241B14;
+    --body: #4A3F33;
+    --muted: #6B5F52;
+    --brand: #A63B22;
+    --brand-deep: #7E2B16;
+    --money: #6B5233;
+    --hair: #EAE2D3;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #171310;
+      --surface: #221C17;
+      --ink: #F3EDE3;
+      --body: #D8CFC2;
+      --muted: #A99C8C;
+      --brand: #E0794F;
+      --brand-deep: #F0906B;
+      --money: #CBA97A;
+      --hair: #322A22;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg); color: var(--ink); line-height: 1.6; font-size: 17px;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 0 24px; }
+  .topbar { border-top: 6px solid var(--brand); }
+  .topbar-inner { max-width: 640px; margin: 0 auto; padding: 20px 24px;
+    display: flex; align-items: center; justify-content: space-between; }
+  .word { font-weight: 800; font-size: 24px; letter-spacing: -0.5px; color: var(--brand); text-decoration: none; }
+  .topbar nav { display: flex; gap: 20px; font-size: 15px; font-weight: 500; }
+  .topbar nav a { color: var(--muted); text-decoration: none; padding: 8px 0; }
+  .topbar nav a:hover, .topbar nav a:focus-visible { color: var(--brand); }
+  main { padding: 56px 0 24px; }
+  .egg { font-size: 44px; line-height: 1; }
+  h1 { font-weight: 800; font-size: clamp(34px, 8vw, 48px); line-height: 1.08;
+       letter-spacing: -1px; margin-top: 18px; }
+  .lede { color: var(--body); font-size: 20px; margin-top: 16px; max-width: 34ch; }
+  .lede strong { color: var(--money); font-weight: 700; }
+  .features { margin: 40px 0 0; list-style: none; }
+  .features li { padding: 16px 0; border-top: 1px solid var(--hair); color: var(--body); }
+  .features li:last-child { border-bottom: 1px solid var(--hair); }
+  .features strong { color: var(--ink); display: block; font-size: 17px; }
+  .cta { margin: 40px 0 8px; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
+    background: var(--ink); color: var(--bg); font-weight: 700; font-size: 16px;
+    padding: 14px 26px; border-radius: 12px;
+  }
+  .badge:hover, .badge:focus-visible { background: var(--brand-deep); color: #fff; }
+  .badge small { display: block; font-weight: 500; font-size: 11px; opacity: 0.8; line-height: 1.2; }
+  @media (prefers-color-scheme: dark) { .badge:hover, .badge:focus-visible { color: #171310; background: var(--brand-deep); } }
+  .under { color: var(--muted); font-size: 14px; margin-top: 14px; }
+  footer { margin-top: 64px; border-top: 1px solid var(--hair); padding: 24px 0 56px;
+           color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  footer a { color: var(--muted); }
+  a { color: var(--brand); text-underline-offset: 3px; }
+  :focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="word" href="./">eggbasket</a>
+    <nav aria-label="Site">
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <div class="egg" aria-hidden="true">🥚</div>
+  <h1>Count today's eggs in ten seconds.</h1>
+  <p class="lede">Know your <strong>cost per egg</strong>. EggBasket is the laying record for people who keep hens, not spreadsheets.</p>
+  <ul class="features">
+    <li><strong>Log the haul in one tap</strong>
+        Tonight's count, straight from the coop door. Works with gloves on, works offline.</li>
+    <li><strong>See what an egg really costs you</strong>
+        Feed, bedding, the odd bag of scratch — EggBasket turns your spending into a plain cost-per-egg number.</li>
+    <li><strong>Yours, on your phone</strong>
+        No account to make, no server of ours to trust. Your records stay on your device and in your own private iCloud.</li>
+  </ul>
+  <div class="cta">
+    <a class="badge" href="https://apps.apple.com/app/id6795516977">
+      <span aria-hidden="true"></span>
+      <span><small>Download on the</small>App Store</span>
+    </a>
+    <p class="under">Free to use. Questions first? <a href="support.html">Read the FAQ</a>.</p>
+  </div>
+</main>
+<footer>
+  <div class="wrap">
+    <span>© 2026 Shakti Thakran</span>
+    <span>
+      <a href="support.html">Support</a> ·
+      <a href="privacy.html">Privacy</a> ·
+      <a href="mailto:shakti.thakran@outlook.com">shakti.thakran@outlook.com</a>
+    </span>
+  </div>
+</footer>
+</body>
+</html>
