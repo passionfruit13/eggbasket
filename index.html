@@ -3,122 +3,188 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>EggBasket — Chicken Egg Tracker for Backyard Flocks</title>
-<meta name="description" content="Count today's eggs in ten seconds. Know your cost per egg. EggBasket keeps your flock's laying record on your phone and in your own private iCloud — no account, no ads.">
-<link rel="canonical" href="https://passionfruit13.github.io/eggbasket/">
+<title>EggBasket Support — Egg Tracker Help: Logging Eggs, Flock Roster, Cost per Egg, Backup &amp; iCloud</title>
+<meta name="description" content="Help for EggBasket — the backyard chicken egg tracker. Logging tonight's eggs, hen roster, cost per egg, share card, backup and restore, private iCloud sync, purchase and restore.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="EggBasket">
-<meta property="og:title" content="EggBasket — Chicken Egg Tracker">
-<meta property="og:description" content="Count today's eggs in ten seconds. Know your cost per egg.">
+<meta property="og:title" content="EggBasket Support — egg tracker help">
+<meta property="og:description" content="Logging tonight's eggs, flock roster, cost per egg, backup &amp; restore, iCloud sync, purchase &amp; restore.">
 <meta property="og:url" content="https://passionfruit13.github.io/eggbasket/">
 <meta name="theme-color" content="#FFF6E3" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#201710" media="(prefers-color-scheme: dark)">
-<link rel="icon" type="image/png" href="favicon.png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="canonical" href="https://passionfruit13.github.io/eggbasket/">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <style>
   :root {
+    --red: #B23A1E;
+    --yolk: #FFC94A;
     --bg: #FFF6E3;
-    --surface: #FFFFFF;
     --ink: #33261A;
-    --body: #52402E;
-    --muted: #7A6A54;
-    --brand: #B23A1E;
-    --brand-deep: #8F2D14;
-    --money: #6F5320;
-    --hair: #F0E4CC;
+    --body: #4A3A29;
+    --muted: #7A6850;
+    --surface: #FFFFFF;
+    --hair: #EBDFC5;
+    --head: #B23A1E;       /* headings / links */
+    --accent-ink: #6F5320; /* honey-brown accents on light */
   }
   @media (prefers-color-scheme: dark) {
     :root {
       --bg: #201710;
-      --surface: #2B2115;
       --ink: #F8EFDD;
-      --body: #E0D4BF;
-      --muted: #B5A78F;
-      --brand: #EE7E45;
-      --brand-deep: #F8A075;
-      --money: #E0B564;
-      --hair: #3A2E1F;
+      --body: #DFD3BE;
+      --muted: #B7A78D;
+      --surface: #2B2115;
+      --hair: #3E3221;
+      --head: #EE7E45;
+      --accent-ink: #E0B564;
     }
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: var(--bg); color: var(--ink); line-height: 1.6; font-size: 17px;
+    font-family: ui-rounded, "SF Pro Rounded", -apple-system, system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 17px;
+    border-top: 6px solid var(--red);
   }
-  .wrap { max-width: 640px; margin: 0 auto; padding: 0 24px; }
-  .topbar { border-top: 6px solid var(--brand); }
-  .topbar-inner { max-width: 640px; margin: 0 auto; padding: 20px 24px;
-    display: flex; align-items: center; justify-content: space-between; }
-  .word { font-weight: 800; font-size: 24px; letter-spacing: -0.5px; color: var(--brand); text-decoration: none; }
-  .topbar nav { display: flex; gap: 20px; font-size: 15px; font-weight: 500; }
-  .topbar nav a { color: var(--muted); text-decoration: none; padding: 8px 0; }
-  .topbar nav a:hover, .topbar nav a:focus-visible { color: var(--brand); }
-  main { padding: 56px 0 24px; }
-  .egg { font-size: 44px; line-height: 1; }
-  h1 { font-weight: 800; font-size: clamp(34px, 8vw, 48px); line-height: 1.08;
-       letter-spacing: -1px; margin-top: 18px; }
-  .lede { color: var(--body); font-size: 20px; margin-top: 16px; max-width: 34ch; }
-  .lede strong { color: var(--money); font-weight: 700; }
-  .features { margin: 40px 0 0; list-style: none; }
-  .features li { padding: 16px 0; border-top: 1px solid var(--hair); color: var(--body); }
-  .features li:last-child { border-bottom: 1px solid var(--hair); }
-  .features strong { color: var(--ink); display: block; font-size: 17px; }
-  .cta { margin: 40px 0 8px; }
-  .badge {
-    display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
-    background: var(--ink); color: var(--bg); font-weight: 700; font-size: 16px;
-    padding: 14px 26px; border-radius: 12px;
+  .wrap { max-width: 680px; margin: 0 auto; padding: 40px 24px 72px; }
+
+  header.page { margin-bottom: 44px; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+  .brand svg { display: block; }
+  .brand .word { font-weight: 800; font-size: 25px; letter-spacing: -0.5px; color: var(--head); }
+  .rule { width: 56px; height: 4px; background: var(--yolk); margin: 18px 0 26px; border-radius: 2px; }
+  h1 { font-weight: 800; font-size: clamp(32px, 7vw, 40px); line-height: 1.1; letter-spacing: -0.8px; }
+  .date { color: var(--muted); font-size: 15px; margin-top: 10px; }
+  .lede { color: var(--muted); font-size: 18px; margin-top: 14px; }
+  .lede strong { color: var(--accent-ink); font-weight: 700; }
+  h2 { font-weight: 800; font-size: 26px; letter-spacing: -0.5px; line-height: 1.15;
+       color: var(--head); margin: 52px 0 10px; }
+  h2::before { content: ""; display: block; width: 40px; height: 3px; background: var(--yolk);
+       border-radius: 2px; margin-bottom: 12px; }
+  .contact h2 { font-size: 20px; }  .contact h2::before { display: none; }
+  h3 { font-weight: 700; font-size: 19px; margin: 30px 0 6px; letter-spacing: -0.2px; }
+  p, li { margin: 8px 0; color: var(--body); }
+  ul { padding-left: 22px; }
+  li strong { color: var(--ink); }
+  .a { color: var(--body); }
+  .path { font-weight: 700; color: var(--head); white-space: nowrap; }
+  a { color: var(--head); text-decoration-color: var(--yolk); text-underline-offset: 3px; }
+  .contact {
+    margin-top: 56px; padding: 24px 26px; background: var(--surface); border-radius: 16px;
+    border: 1px solid var(--hair);
   }
-  .badge:hover, .badge:focus-visible { background: var(--brand-deep); color: #fff; }
-  .badge small { display: block; font-weight: 500; font-size: 11px; opacity: 0.8; line-height: 1.2; }
-  @media (prefers-color-scheme: dark) { .badge:hover, .badge:focus-visible { color: #201710; background: var(--brand-deep); } }
-  .under { color: var(--muted); font-size: 14px; margin-top: 14px; }
-  footer { margin-top: 64px; border-top: 1px solid var(--hair); padding: 24px 0 56px;
+  .contact h2 { margin-top: 0; }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--hair);
            color: var(--muted); font-size: 14px; }
-  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-  footer a { color: var(--muted); }
-  a { color: var(--brand); text-underline-offset: 3px; }
-  :focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 24px; flex-wrap: wrap; }
+  .footer-tag { color: var(--muted); font-size: 15px; margin-top: 10px; }
+  footer nav { display: flex; gap: 18px; font-size: 15px; }
+  footer nav a { color: var(--muted); text-decoration: none; padding: 10px 0; display: inline-block; }
+  footer nav a:hover, footer nav a:focus-visible { color: var(--accent-ink); }
+  .footer-legal { color: var(--muted); font-size: 13px; margin-top: 28px; }
+
+  .skip { position: absolute; left: -9999px; }
+  .skip:focus { left: 16px; top: 16px; position: fixed; z-index: 10; background: var(--yolk);
+    color: #33261A; padding: 10px 16px; border-radius: 999px; font-weight: 700; text-decoration: none; }
+  :focus-visible { outline: 2px solid var(--yolk); outline-offset: 3px; }
 </style>
 </head>
 <body>
-<header class="topbar">
-  <div class="topbar-inner">
-    <a class="word" href="./">eggbasket</a>
-    <nav aria-label="Site">
-      <a href="support.html">Support</a>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="wrap">
+<main id="main">
+
+<header class="page">
+  <a class="brand" href="./" aria-label="EggBasket home">
+    <svg width="34" height="34" viewBox="0 0 32 32" aria-hidden="true"><ellipse cx="16" cy="18" rx="11" ry="13" fill="#F2E3C4" stroke="#B23A1E" stroke-width="2"/><circle cx="12" cy="15" r="1.3" fill="#D9B98A"/><circle cx="19" cy="21" r="1.3" fill="#D9B98A"/></svg>
+    <span class="word">eggbasket</span>
+  </a>
+  <div class="rule"></div>
+  <h1>EggBasket Support</h1>
+  <p class="lede">EggBasket counts tonight's eggs in about ten seconds — <strong>no account, no login</strong> — and always knows what your backyard eggs really cost.</p>
+</header>
+
+<h2>Logging eggs</h2>
+
+<h3>How do I log tonight's eggs?</h3>
+<p class="a">Home tab → tap the big button, once per egg. Each flock gets its own card with today's count front and center, and a week strip underneath shows the last 7 days at a glance. When you're done, lock up the coop with one gesture to close out the night.</p>
+
+<h3>What's the evening reminder?</h3>
+<p class="a">An optional nudge that asks <span class="path">"How many eggs tonight?"</span> — one quiet notification, off by default. Turn it on or off in <span class="path">Settings</span>. It's scheduled on your phone from your own routine; nothing is sent anywhere.</p>
+
+<h3>What about molting season?</h3>
+<p class="a">Molting season mode means zeros still count and the streak never punishes the girls. Log the empty nights like any other — your records stay honest and your streak stays intact.</p>
+
+<h2>Cost per egg</h2>
+
+<h3>How is cost per egg calculated?</h3>
+<p class="a">Log feed, bedding and supplies in seconds as you buy them. EggBasket divides everything you've spent by every egg collected — your honest cost per egg. Watch it fall as the girls hit their stride, and see the day the coop pays for itself.</p>
+
+<h2>Your flock</h2>
+
+<h3>How do I manage hens?</h3>
+<p class="a">The Flocks tab holds your hen roster — names, breeds, and per-hen weekly averages. Photo notes let you attach a photo to each hen (part of the lifetime unlock), picked with Apple's system photo picker.</p>
+
+<h3>What happens when I lose a hen?</h3>
+<p class="a">Archive her. She leaves the roster, but her eggs stay in your records — the history never lies.</p>
+
+<h3>Where are my stats?</h3>
+<p class="a">The Stats tab has your 14-day lay chart, streaks and weekly trends. Insights (weekly trends and your best laying days) is part of the lifetime unlock.</p>
+
+<h2>Sharing the haul</h2>
+
+<h3>How do I share the week?</h3>
+<p class="a">The share card is a coop-sign style image with your flock's name, this week's eggs and your cost per egg — ready for your story, the family group chat, or the neighbors who keep asking. It goes out through the standard iOS share sheet.</p>
+
+<h2>Your data</h2>
+
+<h3>Where does my data live?</h3>
+<p class="a">On your phone. There's no account, no login, and no company server that can lose your records. If iCloud sync is on, your data also syncs privately through your own iCloud — invisible to us.</p>
+
+<h3>Is my data backed up?</h3>
+<p class="a">Two ways, both included: private iCloud sync (no account needed) and manual backup files you keep — restore with <span class="path">Settings → Restore from Backup</span>. Restore merges safely and never duplicates.</p>
+
+<h3>Can I get my records out?</h3>
+<p class="a">Always. CSV export is included for everyone, from day one — your records are portable whether or not you ever buy anything.</p>
+
+<h2>Purchase</h2>
+
+<h3>What's included, and what does the unlock add?</h3>
+<p class="a">Your first flock — up to six hens — includes every feature, nothing held back: logging, stats, share cards, the reminder, iCloud sync, backup and CSV export. A single one-time unlock adds unlimited flocks and hens, Insights, and photo notes on every hen — no subscription, ever. Your eggs stay countable and exportable even if you never buy.</p>
+
+<h3>I bought it on my old phone — how do I unlock my new one?</h3>
+<p class="a">Open the unlock screen (for example by opening Insights on the Stats tab) and tap <span class="path">Restore Purchases</span> with the same Apple Account. Free, always. Refunds are handled by Apple at <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.</p>
+
+<div class="contact">
+  <h2>Still stuck?</h2>
+  <p>Email <a href="mailto:shakti.thakran@outlook.com"><strong>shakti.thakran@outlook.com</strong></a> — I read everything, usually within a day.</p>
+</div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a class="brand" href="./">
+        <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><ellipse cx="16" cy="18" rx="11" ry="13" fill="#F2E3C4" stroke="#B23A1E" stroke-width="2"/><circle cx="12" cy="15" r="1.3" fill="#D9B98A"/><circle cx="19" cy="21" r="1.3" fill="#D9B98A"/></svg>
+        <span class="word">eggbasket</span>
+      </a>
+      <p class="footer-tag">Counted at lock-up, every night.</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="./">Support</a>
       <a href="privacy.html">Privacy</a>
+      <a href="mailto:shakti.thakran@outlook.com">Email</a>
     </nav>
   </div>
-</header>
-<main class="wrap">
-  <div class="egg" aria-hidden="true">🥚</div>
-  <h1>Count today's eggs in ten seconds.</h1>
-  <p class="lede">Know your <strong>cost per egg</strong>. EggBasket is the laying record for people who keep hens, not spreadsheets.</p>
-  <ul class="features">
-    <li><strong>Log the haul in one tap</strong>
-        Tonight's count, straight from the coop door. Works with gloves on, works offline.</li>
-    <li><strong>See what an egg really costs you</strong>
-        Feed, bedding, the odd bag of scratch — EggBasket turns your spending into a plain cost-per-egg number.</li>
-    <li><strong>Yours, on your phone</strong>
-        No account to make, no server of ours to trust. Your records stay on your device and in your own private iCloud.</li>
-  </ul>
-  <div class="cta">
-    <a class="badge" href="https://apps.apple.com/app/id6795516977">
-      <span aria-hidden="true"></span>
-      <span><small>Download on the</small>App Store</span>
-    </a>
-    <p class="under">Free to use. Questions first? <a href="support.html">Read the FAQ</a>.</p>
-  </div>
-</main>
-<footer>
-  <div class="wrap">
-    <span>© 2026 Shakti Thakran</span>
-    <span>
-      <a href="support.html">Support</a> ·
-      <a href="privacy.html">Privacy</a> ·
-      <a href="mailto:shakti.thakran@outlook.com">shakti.thakran@outlook.com</a>
-    </span>
-  </div>
+  <p class="footer-legal">© 2026 Shakti Thakran. Apple, the Apple logo, and App Store are trademarks of Apple Inc.</p>
 </footer>
+
+</div>
 </body>
 </html>
